@@ -1,0 +1,794 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodeLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:CodeLibrary.Data.XmlHelper`1">
+            <summary>
+            解析XML帮助类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Data.XmlHelper`1.ParseXmlData(System.String,System.String)">
+            <summary>
+            解析XML返回结果
+            </summary>
+            <param name="parentNo">返回结果集父项</param>
+            <param name="xmldata">xml字符串</param>
+        </member>
+        <member name="T:CodeLibrary.Data.SQLHelper">
+            <summary>
+               数据库帮助类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.#ctor(System.String)">
+             <summary>
+            构造方法配置数据库连接字符串
+             </summary>
+             <param name="_connection">在WebConfig或AppConfig里面的 ConfigruationString里面设置的name</param>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.ExeCutNonQuery(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行数据库的增改操作
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>业务操作结果</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.ExeCutNonQueryAsync(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            异步执行数据库的增改操作
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>业务操作结果</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.ExeCuteNonQueryTransaction(System.String,System.String,System.Data.CommandType)">
+            <summary>
+            事务性进行CURD操作
+            一般用于对数据库的两次操作
+            </summary>
+            <param name="sqlA">语句一</param>
+            <param name="sqlB">语句二</param>
+            <param name="type">执行类型</param>
+            <param name="ps">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.ExcuteNonQueryTransaction(System.String[],System.Data.CommandType)">
+            <summary>
+            事务性提交批量SQL语句
+            </summary>
+            <param name="sqlList">SQL数组</param>
+            <param name="text">执行类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.GetDataTable(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            获取数据表Table
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.GetDataTableAsync(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            异步获取数据表Table(可等待，后期修改)
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.ExecuteScalar(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            执行数据库的增改操作
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>业务操作结果</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.ExecuteScalarAsycn(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            异步执行数据库的增改操作
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>业务操作结果</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.GetDataSet(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            返回数据内存集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>内存表</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.GetDataSetAsync(System.String,System.Data.CommandType,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            异步返回数据内存集合
+            </summary>
+            <param name="sql">SQL语句</param>
+            <param name="type">语句类型,SQLTEXT或存储过程</param>
+            <param name="ps">参数数组</param>
+            <returns>内存表</returns>
+        </member>
+        <member name="M:CodeLibrary.Data.SQLHelper.SqlBulkCopyByDatatable(System.String,System.String,System.Data.DataTable)">
+            <summary>
+            批量插入数据库，列名一定要和数据库保持一致!
+            </summary>
+            <param name="connection">目标连接字符</param>
+            <param name="TableName">目标表</param>
+            <param name="dt">源数据</param>
+        </member>
+        <member name="T:CodeLibrary.Data.TableHelper`1">
+            <summary>
+            Tabelb转换帮助类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Data.TableHelper`1.DataTableConvertToList(System.Data.DataTable)">
+            <summary>
+            DataTable转成实体类集合
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Data.TableHelper`1.DataTableConvertToListAsync(System.Data.DataTable)">
+            <summary>
+            异步DataTable转成实体类集合
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Data.TableHelper`1.DataTableConvertTModel(System.Data.DataTable)">
+            <summary>
+            DataTable转成实体类
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Data.TableHelper`1.DataTableConvertTModelAsync(System.Data.DataTable)">
+            <summary>
+            异步DataTable转成实体类
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns></returns>
+        </member>
+        <member name="T:CodeLibrary.ExcelProt.ExcelHelper">
+            <summary>
+            EXCEL导入导出类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.ExcelProt.ExcelHelper.DataTableToExcel(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Data.DataTable,System.String,System.String,System.Boolean)">
+            <summary>
+            导出EXCEL到浏览器下载且保存在指定路径
+            </summary>
+            <param name="sheetname">导出文件名</param>
+            <param name="dic">键值对/ 字段名-标题</param>
+            <param name="dt">数据Table</param>
+            <param name="filepath">导出路径</param>
+            <param name="filename">文件名</param>
+             /// <param name="IsValidate">是否需要验证导出列和Table中的列一致</param>
+        </member>
+        <member name="M:CodeLibrary.ExcelProt.ExcelHelper.DataTableToExcelAsynC(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Data.DataTable,System.String,System.String,System.Boolean)">
+            <summary>
+            异步导出EXCEL到浏览器下载且保存在指定路径
+            </summary>
+            <param name="sheetname">导出文件名</param>
+            <param name="dic">键值对/ 字段名-标题</param>
+            <param name="dt">数据Table</param>
+            <param name="filepath">导出路径</param>
+            <param name="filename">文件名</param>
+             /// <param name="IsValidate">是否需要验证导出列和Table中的列一致</param>
+        </member>
+        <member name="T:CodeLibrary.Formatter.DataToJSON">
+            <summary>
+            将对象进行序列化为json
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Formatter.DataToJSON.GetSerizaterObject(System.Object)">
+            <summary>
+            将对象进行序列化
+            </summary>
+            <param name="obj">对象</param>
+            <returns></returns>
+        </member>
+        <member name="T:CodeLibrary.Formatter.SerizaerHelper`1">
+            <summary>
+            序列化与反序列化
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Formatter.SerizaerHelper`1.GetSerizaterList(System.Collections.Generic.List{`0})">
+            <summary>
+            将对象集合进行序列化
+            </summary>
+            <param name="list">集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Formatter.SerizaerHelper`1.DescSerizationList(System.String)">
+            <summary>
+            将json数据进行集合反序列化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Formatter.SerizaerHelper`1.DescSerizationObject(System.String)">
+            <summary>
+            将json数据反序列化成对象
+            </summary>
+            <param name="json">json数据</param>
+            <returns></returns>
+        </member>
+        <member name="T:CodeLibrary.Log.LogHelper">
+            <summary>
+            日志记录类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Log.LogHelper.WriteToLog(System.String)">
+            <summary>
+            写入日志
+            </summary>
+            <param name="content">日志内容</param>
+            <param name="folderName">文件夹名称</param>
+            <param name="filePrefixName">文件前缀名</param>
+        </member>
+        <member name="M:CodeLibrary.Log.LogHelper.WriteToLog(System.String,System.String)">
+            <summary>
+            写入日志,日志文件名称增加前缀
+            </summary>
+            <param name="content">内容</param>
+            <param name="foldname">前缀</param>
+        </member>
+        <member name="M:CodeLibrary.Log.LogHelper.WriteToLogByName(System.String,System.String)">
+            <summary>
+            写入日志,自定义日志文件名称
+            </summary>
+            <param name="content">内容</param>
+            <param name="filename">文件名称</param>
+        </member>
+        <member name="T:CodeLibrary.Memory.MeoeryHelper">
+            <summary>
+              解密加密类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Memory.MeoeryHelper.Md5Menory(System.String)">
+            <summary>
+            M5D加密
+            </summary>
+            <param name="str">要加密的字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Memory.MeoeryHelper.DecodeBase64(System.Text.Encoding,System.String)">
+            <summary>
+            Base64解密
+            </summary>
+            <param name="encode">加密时候的编码</param>
+            <param name="result">加密后的字符串</param>
+            <returns>加密前的字符串</returns>
+        </member>
+        <member name="M:CodeLibrary.Memory.MeoeryHelper.Base64Encode(System.Text.Encoding,System.String)">
+             <summary>
+            Base64加密
+             </summary>
+             <param name="encodeType">加密的类型</param>
+             <param name="source">要加密的字符串</param>
+             <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:CodeLibrary.Memory.MeoeryHelper.Encrypt(System.String,System.String)">
+            <summary>
+            需要自定义密码的 密文的加密
+            </summary>
+            <param name="Text">要加密的字符串</param>
+            <param name="sKey">秘钥</param>
+            <returns>加密后的密文</returns>
+        </member>
+        <member name="M:CodeLibrary.Memory.MeoeryHelper.Decrypt(System.String,System.String)">
+            <summary>
+            需要自定义密码的 密文的解密
+            </summary>
+            <param name="text">加密后的字符串</param>
+            <param name="sKey">秘钥(加密所用的秘钥)</param>
+            <returns>加密前的结果</returns>
+        </member>
+        <member name="T:CodeLibrary.StrUlit.ParamterCheckExtensions">
+            <summary>
+            用于字符串扩展检查
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ParamterCheckExtensions.ChekcNotNull(System.String)">
+            <summary>
+            检查字符串是否为空
+            </summary>
+            <param name="parms"></param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ParamterCheckExtensions.CheckListNotNull``1(System.Collections.Generic.List{``0})">
+            <summary>
+            检查集合是否为空
+            </summary>
+            <typeparam name="T">集合类型</typeparam>
+            <param name="parms">参数</param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ParamterCheckExtensions.CheckIEnumerable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            检查集合是否为空
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parms"></param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ParamterCheckExtensions.CheckGuidNotNull(System.Guid)">
+            <summary>
+            检查GUID是否为空
+            </summary>
+            <param name="guid"></param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ParamterCheckExtensions.CheckDictionaryNotNull(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            检查字典集合是否为空
+            </summary>
+            <param name="parms"></param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ParamterCheckExtensions.CheckObjectNotNull``1(``0)">
+            <summary>
+            检查对象是否为空
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="data">对象</param>
+        </member>
+        <member name="T:CodeLibrary.StrUlit.RegexHelper">
+            <summary>
+            正则表达式校验
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckTextIsNull(System.String)">
+            <summary>
+            判断是否为空
+            </summary>
+            <param name="str">文本框中的文本</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckPhone(System.String)">
+            <summary>
+            判断手机号码格式是否正确
+            </summary>
+            <param name="str">手机号码</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckEmail(System.String)">
+            <summary>
+            判断邮箱格式是否正确
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckCard(System.String)">
+            <summary>
+            判断身份证是否正确/18/15位身份证
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckDay(System.String)">
+            <summary>
+            匹配日期格式 如:2015-10-25
+            </summary>
+            <param name="str">日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.ChekInterNetUrl(System.String)">
+            <summary>
+            匹配网址 例如:http://www.baidu.com
+            </summary>
+            <param name="str">网址</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckHanzhi(System.String)">
+            <summary>
+            匹配输入的字符只能是中文，汉字
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckEnglistAndNum(System.String)">
+            <summary>
+            匹配只能是数字或英文
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckEnglist(System.String)">
+            <summary>
+            由26个英文字母组成的字符串
+            </summary>
+            <param name="str">输入的字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckEnChNumIsnotOthers(System.String)">
+            <summary>
+            中文、英文、数字但不包括下划线等符号
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.CheckEnChNumOthers(System.String)">
+            <summary>
+            中文、英文、数字包括下划线
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.RegexHelper.IsHefa(System.String)">
+            <summary>
+              帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CodeLibrary.StrUlit.ReturnResult">
+            <summary>
+            返回业务操作结果
+            </summary>
+        </member>
+        <member name="P:CodeLibrary.StrUlit.ReturnResult.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:CodeLibrary.StrUlit.ReturnResult.Message">
+            <summary>
+            消息返回结果
+            </summary>
+        </member>
+        <member name="P:CodeLibrary.StrUlit.ReturnResult.Data">
+            <summary>
+            返回参数
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ReturnResult.#ctor">
+            <summary>
+            返回业务操作结果
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ReturnResult.#ctor(CodeLibrary.StrUlit.ResultCode)">
+            <summary>
+            返回业务操作结果
+            </summary>
+            <param name="code">状态码</param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ReturnResult.#ctor(CodeLibrary.StrUlit.ResultCode,System.String)">
+            <summary>
+            返回业务操作结果
+            </summary>
+            <param name="code">状态码</param>
+            <param name="message">状态消息</param>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.ReturnResult.#ctor(CodeLibrary.StrUlit.ResultCode,System.String,System.Object)">
+            <summary>
+            返回业务操作结果
+            </summary>
+            <param name="code">状态码</param>
+            <param name="message">返回消息</param>
+            <param name="data">返回结果集</param>
+        </member>
+        <member name="T:CodeLibrary.StrUlit.ResultCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.StrUlit.ResultCode.SUCCESS">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.StrUlit.ResultCode.FAILED">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.StrUlit.ResultCode.ERROR">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.StrUlit.ResultCode.WARNING">
+            <summary>
+            警告
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.StrUlit.ResultCode.EXPIRE">
+            <summary>
+            过期
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.StrUlit.ResultCode.UNKNOW">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="T:CodeLibrary.StrUlit.XGuidLHelper">
+            <summary>
+            产生GUID帮助类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XGuidLHelper.GetGuid">
+            <summary>
+            获取新的guid不含有-
+            </summary>
+            <returns>返回guid</returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XGuidLHelper.GetNewGuid">
+            <summary>
+            获取标准的GUID
+            </summary>
+            <returns>返回guid</returns>
+        </member>
+        <member name="T:CodeLibrary.StrUlit.XStringHelper">
+            <summary>
+            字符串封装
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.TimerStart">
+            <summary>
+            计时器开始
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.TimerEnd(System.Diagnostics.Stopwatch)">
+            <summary>
+            计时器结束
+            </summary>
+            <param name="watch"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.RemoveDup(System.String[])">
+            <summary>
+            删除数组中的重复项
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.CreateNo">
+            <summary>
+            自动生成编号  201008251145409865
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CodeLibrary.StrUlit.XStringHelper.GetNowDate">
+            <summary>
+            获取当前日期 2018-11-03
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.RndNum(System.Int32)">
+            <summary>
+            生成0-9随机数
+            </summary>
+            <param name="codeNum">生成长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.CreateNo(System.String,System.Int32)">
+            <summary>
+            产生随机数
+            </summary>
+            <param name="piex">前缀</param>
+            <param name="length">长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.DelLastComma(System.String)">
+            <summary>
+            删除最后结尾的一个逗号
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.DelLastChar(System.String,System.String)">
+            <summary>
+            删除最后结尾的指定字符后的字符
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.DelLastLength(System.String,System.Int32)">
+            <summary>
+            删除最后结尾的长度
+            </summary>
+            <param name="str"></param>
+            <param name="Length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.DateTimeComparea(System.DateTime,System.DateTime)">
+            <summary>
+            日期比较
+            </summary>
+            <param name="t1">开始日期,以开始日期为标准，用结束日期来比较</param>
+            <param name="t2">结束日期</param>
+            <returns>返回true/false，如果开始日期大于结束日期则为false,反之为true</returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.SubstringStr(System.String)">
+             <summary>
+             截取字符串到最后一个字符长度减1
+            例如：13456， 截取后：13456
+             </summary>
+             <param name="str">字符串</param>
+             <returns></returns>
+        </member>
+        <member name="P:CodeLibrary.StrUlit.XStringHelper.TimeGrnderStemp">
+            <summary>
+            获取时间戳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.CreateNo(System.String)">
+            <summary>
+             自动生成编号(带前缀) 
+            </summary>
+            <param name="ext">前缀</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.StrUlit.XStringHelper.GetDataTime">
+            <summary>
+            获取当前时间 标准时间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CodeLibrary.Web.WebHelper">
+            <summary>
+            HTTP请求接口类
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.Post(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送POST请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dic">键值对（Dictionary）</param>
+            <returns>返回相应结果</returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostAsycn(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送POST请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dic">键值对（Dictionary）</param>
+            <returns>返回相应结果</returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostWebservice(System.String,System.String)">
+            <summary>
+            发送POST或GET请求Webservice接口
+            </summary>
+            <param name="targetURL">请求地址</param>
+            <param name="postData">XML字符串（需要自己拼接头部等xmlns信息）</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostWebserviceAsync(System.String,System.String)">
+            <summary>
+            发送POST或GET请求Webservice接口
+            </summary>
+            <param name="targetURL">请求地址</param>
+            <param name="postData">XML字符串（需要自己拼接头部等xmlns信息）</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostSoapService(System.String,System.String,System.Collections.Hashtable)">
+            <summary>
+            发送XML数据请求webserivce（无需拼接XML）
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="Method">请求方法</param>
+            <param name="hs">键值对</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostApi(System.String,System.Object,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送POST请求请求WEBAPI接口
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="obj_model">请求参数</param>
+            <param name="contentType">ContentType</param>
+            <param name="dic">HTTP标头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostApiAsyc(System.String,System.Object,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送POST请求请求WEBAPI接口
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="obj_model">请求参数</param>
+            <param name="contentType">ContentType</param>
+            <param name="dic">HTTP标头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.GetApi(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送http Get请求API
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dic">参数</param>
+            <param name="head">请求头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.GetApiAsycn(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送http Get请求API
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="dic">参数</param>
+            <param name="head">请求头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.GetApi(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送http Get请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="head">请求头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.GetApiAsycn(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送http Get请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="head">请求头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.GetApi(System.String,System.Collections.Hashtable,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送Http Get请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="hs">Hashtable</param>
+            <param name="head">请求头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.GetApiAsync(System.String,System.Collections.Hashtable,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            发送Http Get请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="hs">Hashtable</param>
+            <param name="head">请求头</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostApi(System.String,System.String,System.String)">
+            <summary>
+            POST请求网络接口
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="postData">发送参数</param>
+            <param name="contentType">请求头类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostApiAsync(System.String,System.String,System.String)">
+            <summary>
+            POST请求网络接口
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="postData">发送参数</param>
+            <param name="contentType">请求头类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CodeLibrary.Web.WebHelper.PostApiClient(System.String,System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            HttpClient 异步 POST请求网络地址
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="parms">键值对参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:CodeLibrary.Web.WebValidateHelper">
+            <summary>
+            请求验证帮助类
+            </summary>
+        </member>
+        <member name="F:CodeLibrary.Web.WebValidateHelper.Methods">
+            <summary>
+            请求方法
+            </summary>
+        </member>
+        <member name="M:CodeLibrary.Web.WebValidateHelper.ValdateMethod">
+            <summary>
+            验证当前HTTP的请求方法
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
