@@ -33,6 +33,8 @@ namespace CreateCode
         {
             this.timer1.Enabled = false;
             this.label3.Visible = false;
+            comboBox2.Text = "SQLServer";
+            textAddress.Text = "Data Source=.;Initial Catalog=Test_T;User ID=sa;Password=0103";
         }
 
         /// <summary>
@@ -61,7 +63,6 @@ namespace CreateCode
             var result= dbInstance.ConnectionDb(this.textAddress.Text);
             if (result.Success)
             {
-                this.timer1.Enabled = false;
                 MainFrom me = new MainFrom();
                 me.Show();
                 this.Hide();

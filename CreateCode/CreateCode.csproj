@@ -61,6 +61,7 @@
       <DependentUpon>MainFrom.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DbBaseType.cs" />
+    <Compile Include="Model\KeywordDictory.cs" />
     <Compile Include="Model\MenuEntity.cs" />
     <Compile Include="Model\ReturnResult.cs" />
     <Compile Include="Model\TableEntity.cs" />

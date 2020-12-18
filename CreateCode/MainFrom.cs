@@ -86,170 +86,33 @@ namespace CreateCode
             
         }
 
-        #region[格式化数据类型]
-
-        public string GetType(string type)
-        {
-            string temp = "";
-            switch (type)
-            {
-                case "nvarchar":
-                    temp = "string";
-                    break;
-
-                case "varchar":
-                    temp = "string";
-                    break;
-
-                case "datetime":
-                    temp = "DateTime";
-                    break;
-
-                case "int":
-                    temp = "int";
-                    break;
-
-                case "decimal":
-                    temp = "decimal";
-                    break;
-
-                case "bit":
-                    temp = "bool";
-                    break;
-
-                case "uniqueidentifier":
-                    temp = "Guid";
-                    break;
-
-                case "float":
-                    temp = "double";
-                    break;
-
-                case "bigint":
-                    temp = "int";
-                    break;
-
-                case "image":
-                    temp = "byte[]";
-                    break;
-
-                case "money":
-                    temp = "decimal";
-                    break;
-
-                case "tinyint":
-                    temp = "byte";
-                    break;
-
-                case "numeric":
-                    temp = "decimal";
-                    break;
-
-                case "ntext":
-                    temp = "string";
-                    break;
-            }
-            return temp;
-        }
-
-        #endregion
-
-        #region [数据类型转换]
-
-        public string ConverType(string type, string colume)
-        {
-            string temp = "";
-            switch (type)
-            {
-                case "nvarchar":
-                    temp = ".ToString()";
-                    break;
-
-                case "varchar":
-                    temp = ".ToString()";
-                    break;
-
-                case "datetime":
-                    temp = "Convert.ToDateTime()";
-                    break;
-
-                case "int":
-                    temp = "int";
-                    break;
-
-                case "decimal":
-                    temp = "decimal";
-                    break;
-
-                case "bit":
-                    temp = "bool";
-                    break;
-
-                case "uniqueidentifier":
-                    temp = "Guid";
-                    break;
-
-                case "float":
-                    temp = "double";
-                    break;
-
-                case "bigint":
-                    temp = "int";
-                    break;
-
-                case "image":
-                    temp = "byte[]";
-                    break;
-
-                case "money":
-                    temp = "decimal";
-                    break;
-
-                case "tinyint":
-                    temp = "byte";
-                    break;
-
-                case "numeric":
-                    temp = "decimal";
-                    break;
-
-                case "ntext":
-                    temp = "string";
-                    break;
-            }
-            return temp;
-        }
-
-        #endregion
-
-        #region[选择数据表生成模型]
-
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             this.textBox1.Text = e.Node.Text;
             this.textBox1.ReadOnly = true;
         }
-
-        #endregion
-
-      
-
         #region[字体查找]
 
-        public void changeStrColorFont(RichTextBox rtBox, string str, Color color)
+        public void changeStrColorFont(RichTextBox rtBox)
         {
-            int pos = 0;
-            while (true)
+            var keys = KeywordDictory.GetKeyworkds();
+           
+            for (int i = 0; i < keys.Count; i++)
             {
-                pos = rtBox.Find(str, pos, RichTextBoxFinds.WholeWord);
-                if (pos == -1)
-                    break;
-                rtBox.SelectionStart = pos;
-                rtBox.SelectionLength = str.Length;
-                rtBox.SelectionColor = color;
-
-                pos = pos + 1;
+                int pos = 0;
+                string str = keys[i];
+                while (true)
+                {
+                    pos = rtBox.Find(str, pos, RichTextBoxFinds.WholeWord);
+                    if (pos == -1)
+                        break;
+                    rtBox.SelectionStart = pos;
+                    rtBox.SelectionLength = str.Length;
+                    rtBox.SelectionColor = Color.Blue;
+                    pos += 1;
+                }
             }
+           
         }
 
         #endregion
@@ -263,6 +126,8 @@ namespace CreateCode
             if (list.Any())
             {
                this.richTextBox1.Text = FormTextBuilder.Builder(list, tablename, type);
+                var text = richTextBox1.Text;
+                changeStrColorFont(richTextBox1);
             }
             else
             {
