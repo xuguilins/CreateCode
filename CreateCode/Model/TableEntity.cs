@@ -10,7 +10,9 @@ namespace CreateCode.Model
     {
         public string table_name { get; set; }
         public string column_name { get; set; }
-        public string column_description { get; set; }
+        public string column_length { get; set; }
         public string colum_type { get; set; }
+
+        public DbBaseType  DbBaseType { get; set; }
     }
 }

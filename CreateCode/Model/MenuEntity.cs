@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace CreateCode.Model
 {
-    /// <summary>
-    /// 数据库类型
-    /// </summary>
-    public enum DbType
+    public class MenuEntity
     {
-        SqlServer = 1,
-        Oracle = 2,
-        MySql = 3
+        public string ParentName { get; set; }
+        public string TableName { get; set; }
     }
 }
