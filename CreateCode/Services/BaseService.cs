@@ -13,6 +13,10 @@ namespace CreateCode.Services
     public abstract class BaseService
     {
         /// <summary>
+        /// 数据库类型
+        /// </summary>
+        public abstract DbBaseType DbBaseType { get;  }
+        /// <summary>
         /// 数据库名称
         /// </summary>
         public virtual string  DataBaseName { get;  set; }

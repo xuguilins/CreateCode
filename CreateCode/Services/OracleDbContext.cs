@@ -98,5 +98,6 @@ namespace CreateCode.Services
         }
 
         public override DbConnection DbConnection { get; set; }
+        public override DbBaseType DbBaseType => DbBaseType.Oracle;
     }
 }

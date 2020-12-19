@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +34,16 @@ namespace CreateCode
         {
             this.timer1.Enabled = false;
             this.label3.Visible = false;
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(m => typeof(BaseService).IsAssignableFrom(m) && !m.IsAbstract && m.IsClass && !m.IsInterface).ToList();
+            foreach (Type item in types)
+            {
+                var value = item.GetProperty("DbBaseType");
+                var instaceValue = Activator.CreateInstance(item);
+                var propItem = value.GetValue(instaceValue, null);
+                this.comboBox2.Items.Add(propItem);
+            }
+
+
         }
 
         /// <summary>

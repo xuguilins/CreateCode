@@ -98,5 +98,6 @@ namespace CreateCode.Services
             return dt;
         }
         public override DbConnection DbConnection { get; set; }
+        public override DbBaseType DbBaseType => DbBaseType.MySql;
     }
 }
