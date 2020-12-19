@@ -46,6 +46,7 @@ namespace CreateCode
             if (string.IsNullOrWhiteSpace(textAddress.Text))
             {
                 MessageBox.Show("数据库链接字符串不能为空");
+                return;
             }
             if (string.IsNullOrWhiteSpace(comboBox2.Text))
             {
