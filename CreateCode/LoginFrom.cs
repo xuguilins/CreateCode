@@ -33,8 +33,6 @@ namespace CreateCode
         {
             this.timer1.Enabled = false;
             this.label3.Visible = false;
-          //  comboBox2.Text = "SQLServer";
-           //   textAddress.Text = "Data Source=.;Initial Catalog=TestEngine;User ID=sa;Password=0103";
         }
 
         /// <summary>

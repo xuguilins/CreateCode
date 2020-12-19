@@ -58,6 +58,9 @@ namespace CreateCode.Services
                 case DbBaseType.SqlServer:
                     res = SQLServerParseType(typename);
                     break;
+                case DbBaseType.MySql:
+                    res = MySQLServerParseType(typename);
+                    break;
             }
             return res;
         }
@@ -153,6 +156,66 @@ namespace CreateCode.Services
                 case "datetime2":
                     res = "DateTime";
                     break;
+                case "double":
+                    res = "double";
+                    break;
+            }
+            return res;
+
+        }
+
+        private static string MySQLServerParseType(string typeName)
+        {
+            string res = string.Empty;
+            switch (typeName.ToLower())
+            {
+                case "varbinary":
+                    res = "byte[]";
+                    break;
+                case "varchar":
+                    res = "string";
+                    break;
+                case "nvarchar":
+                    res = "string";
+                    break;
+                case "uniqueidentifier":
+                    res = "Guid";
+                    break;
+                case "int":
+                    res = "int";
+                    break;
+                case "nchar":
+                    res = "string";
+                    break;
+                case "text":
+                    res = "string";
+                    break;
+                case "ntext":
+                    res = "string";
+                    break;
+                case "float":
+                    res = "double";
+                    break;
+                case "LONG":
+                    res = "string";
+                    break;
+                case "char":
+                    res = "string";
+                    break;
+                case "decimal":
+                    res = "decimal";
+                    break;
+                case "timestamp":
+                    res = "byte[]";
+                    break;
+                case "datetime":
+                    res = "DateTime";
+                    break;
+                    
+                case "double":
+                    res = "double";
+                    break;
+
             }
             return res;
 

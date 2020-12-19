@@ -31,10 +31,8 @@ namespace CreateCode.Model
                 "return",
                 "public",
                 "using",
-                "<summary>",
-                "namespace",
-                "///",
-                "</summary>"
+                "double",
+                "namespace"
             };
         }
     }
