@@ -33,8 +33,8 @@ namespace CreateCode
         {
             this.timer1.Enabled = false;
             this.label3.Visible = false;
-            comboBox2.Text = "SQLServer";
-            textAddress.Text = "Data Source=.;Initial Catalog=Test_T;User ID=sa;Password=0103";
+          //  comboBox2.Text = "SQLServer";
+           //   textAddress.Text = "Data Source=.;Initial Catalog=TestEngine;User ID=sa;Password=0103";
         }
 
         /// <summary>
@@ -60,8 +60,10 @@ namespace CreateCode
             DbInstaceType= CodeExtendsition.GetBaseType(typeName);
             var dbInstance = DbFactory.CreateInstance(DbInstaceType);
             ConnectionStr = textAddress.Text;
-            var result= dbInstance.ConnectionDb(this.textAddress.Text);
-            if (result.Success)
+            var result =  Task.Factory.StartNew( () => ConnectionDb(dbInstance)); //dbInstance.ConnectionDb(this.textAddress.Text);
+            result.Wait();
+            var dataRes = result.Result;
+            if (dataRes.Success)
             {
                 MainFrom me = new MainFrom();
                 me.Show();
@@ -69,8 +71,13 @@ namespace CreateCode
             } else
             {
                 this.label3.Text = "数据库连接失败";
-                MessageBox.Show(result.Message);
+                MessageBox.Show(dataRes.Message);
             }
+        }
+        private  ReturnResult ConnectionDb(BaseService dbInstance)
+        {
+             var result=  dbInstance.ConnectionDb(this.textAddress.Text);
+            return result;
         }
         /// <summary>
         /// 退出
