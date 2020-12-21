@@ -14,26 +14,11 @@ namespace CreateCode.Services
         {
             //获取枚举
             var type = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(x => typeof(DbBaseType) == x);
-           if (type!=null)
+           if (name!=null)
             {
-                DbBaseType value = DbBaseType.SqlServer;
-                var itemProp = type.GetMembers().FirstOrDefault(m => m.Name == name);
-                if (itemProp != null)
-                {
-                     
-                    switch (itemProp.Name)
-                    {
-                        case "SqlServer":
-                            value=DbBaseType.SqlServer;
-                            break;
-                        case "Oracle":
-                            value = DbBaseType.Oracle;
-                            break;
-                        case "MySql":
-                            value = DbBaseType.MySql;
-                            break;
-                    }
-                }
+                var value = DbBaseType.SqlServer;
+                if (name != null)
+                   value= (DbBaseType)Enum.Parse(typeof(DbBaseType),name);
                 return value;
             }
             return DbBaseType.SqlServer;

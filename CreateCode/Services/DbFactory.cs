@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,26 +11,22 @@ namespace CreateCode.Services
 {
     public static class DbFactory
     {
-        /// <summary>
-        /// 可以用反射来实现
-        /// </summary>
-        /// <param name="dbType"></param>
-        /// <returns></returns>
+      
        public static BaseService CreateInstance(DbBaseType dbType)
         {
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(m => typeof(BaseService).IsAssignableFrom(m) && !m.IsAbstract && m.IsClass && !m.IsInterface).ToList();
             BaseService service = null;
-            switch (dbType)
+            for (int i = 0; i < types.Count; i++)
             {
-                case DbBaseType.SqlServer:
-                    service = new SqlServerDbContext();
+                var item = types[i];
+                var value = item.GetProperty("DbBaseType");
+                var instaceValue = Activator.CreateInstance(item);
+                var propItem = value.GetValue(instaceValue, null)?.ToString();
+                if (dbType.ToString() == propItem)
+                {
+                    service = instaceValue as BaseService;
                     break;
-                case DbBaseType.MySql:
-                    service = new MySqlDbContext();
-                    break;
-                case DbBaseType.Oracle:
-                    service = new OracleDbContext();
-                    break;
-
+                }
             }
             return service;
         }
