@@ -46,9 +46,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Teal;
             this.pictureBox1.Location = new System.Drawing.Point(0, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(589, 108);
+            this.pictureBox1.Size = new System.Drawing.Size(442, 86);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -58,10 +58,11 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(157, 25);
+            this.label1.Location = new System.Drawing.Point(118, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(29, 10, 29, 10);
-            this.label1.Size = new System.Drawing.Size(291, 59);
+            this.label1.Padding = new System.Windows.Forms.Padding(22, 8, 22, 8);
+            this.label1.Size = new System.Drawing.Size(218, 47);
             this.label1.TabIndex = 1;
             this.label1.Text = "登陆服务器";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -70,20 +71,22 @@
             // 
             this.textAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textAddress.Font = new System.Drawing.Font("微软雅黑", 10.8F);
-            this.textAddress.Location = new System.Drawing.Point(68, 164);
-            this.textAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textAddress.Location = new System.Drawing.Point(51, 131);
+            this.textAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textAddress.Multiline = true;
             this.textAddress.Name = "textAddress";
-            this.textAddress.Size = new System.Drawing.Size(506, 81);
+            this.textAddress.Size = new System.Drawing.Size(380, 65);
             this.textAddress.TabIndex = 10;
+   
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(63, 125);
+            this.label4.Location = new System.Drawing.Point(47, 100);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 25);
+            this.label4.Size = new System.Drawing.Size(144, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "数据库链接字符串：";
             // 
@@ -93,10 +96,10 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(305, 372);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Location = new System.Drawing.Point(229, 298);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(164, 40);
+            this.btnExit.Size = new System.Drawing.Size(123, 32);
             this.btnExit.TabIndex = 14;
             this.btnExit.Text = "取消/退出";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -108,10 +111,10 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(67, 372);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.Location = new System.Drawing.Point(50, 298);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(164, 40);
+            this.btnLogin.Size = new System.Drawing.Size(123, 32);
             this.btnLogin.TabIndex = 13;
             this.btnLogin.Text = "连接服务器";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -121,9 +124,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(61, 268);
+            this.label2.Location = new System.Drawing.Point(46, 214);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 25);
+            this.label2.Size = new System.Drawing.Size(88, 20);
             this.label2.TabIndex = 15;
             this.label2.Text = "数据库类型:";
             // 
@@ -131,10 +135,10 @@
             // 
             this.comboBox2.Font = new System.Drawing.Font("宋体", 18F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(191, 259);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox2.Location = new System.Drawing.Point(143, 207);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(277, 38);
+            this.comboBox2.Size = new System.Drawing.Size(209, 32);
             this.comboBox2.TabIndex = 20;
             // 
             // timer1
@@ -144,18 +148,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(221, 326);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(166, 261);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
+            this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 21;
             this.label3.Text = "label3";
             // 
             // LoginFrom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 450);
+            this.ClientSize = new System.Drawing.Size(442, 360);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label2);
@@ -166,7 +169,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LoginFrom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginFrom";

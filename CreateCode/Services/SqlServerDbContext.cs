@@ -17,15 +17,15 @@ namespace CreateCode.Services
         public override string UserId { get; set; }
         private SqlConnection _SqlConnection;
         public override ReturnResult ConnectionDb(string connectionString)
-        {
+        {   
             try
             {
-                UserId = connectionString.GetStrValue("USER ID");
-                DataBaseName = connectionString.GetStrValue("CATALOG");
+                UserId = connectionString.GetStrValue("USERID");
                 PassWord = connectionString.GetStrValue("PASSWORD");
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
                 _SqlConnection = connection;
+                DataBaseName = connection.Database;
                 return new ReturnResult("数据库连接成功", true);
             }
             catch (Exception ex)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CreateCode.Services
@@ -41,7 +42,7 @@ namespace CreateCode.Services
 
         public static string GetStrValue(this string str,string keyword)
         {
-            //"USER ID=SA;PASSWORD=0103;"
+            str = Regex.Replace(str, @"\s", "");
             //验证字符串最后以;结尾
             if (!str.EndsWith(";"))
                 str += ";";

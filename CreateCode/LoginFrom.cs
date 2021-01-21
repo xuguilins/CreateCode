@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,7 +54,7 @@ namespace CreateCode
         /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
- 
+     
             if (string.IsNullOrWhiteSpace(textAddress.Text))
             {
                 MessageBox.Show("数据库链接字符串不能为空");
